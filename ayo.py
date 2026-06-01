@@ -1,29 +1,17 @@
-# ═══════════════════════════════════════════════════
+# ================================================
 #  AYO — Attack Your Offenders
 #  By Fashipe Oluwadamilare Ayoola
 #  For authorized testing & CTFs ONLY
-# ═══════════════════════════════════════════════════
+# ================================================
 
-import os
-import sys
-import time
+import os, sys, time
 
-# ── Color Palette (DARE-style) ───────────────────────
-GREEN       = "\033[92m"
-GREEN_DIM   = "\033[32m"
-CYAN        = "\033[96m"
-WHITE       = "\033[97m"
-YELLOW      = "\033[93m"
-RED         = "\033[91m"
-GRAY        = "\033[90m"
-BOLD        = "\033[1m"
-DIM         = "\033[2m"
-RESET       = "\033[0m"
-
-# ── Accent colors ────────────────────────────────────
-ACC    = CYAN
-ACC2   = GREEN
-BORDER = GREEN_DIM
+GREEN      = "\033[92m"; GREEN_DIM = "\033[32m"
+CYAN       = "\033[96m"; WHITE     = "\033[97m"
+YELLOW     = "\033[93m"; RED       = "\033[91m"
+GRAY       = "\033[90m"; BOLD      = "\033[1m"
+DIM        = "\033[2m";  RESET     = "\033[0m"
+ACC = CYAN; ACC2 = GREEN; BORDER = GREEN_DIM
 
 def clear():
     os.system("cls" if os.name == "nt" else "clear")
@@ -37,121 +25,71 @@ def slow_print(text, delay=0.012):
 
 def banner():
     clear()
-    print(f"{BORDER}")
-    print(f"  ╔{'═'*55}╗")
-    print(f"  ║{' '*55}║")
-    print(f"  ║{ACC}{BOLD}    ░█████╗░██╗░░░██╗░█████╗░                         {RESET}{BORDER}║")
-    print(f"  ║{ACC}{BOLD}    ██╔══██╗╚██╗░██╔╝██╔══██╗                         {RESET}{BORDER}║")
-    print(f"  ║{ACC}{BOLD}    ███████║░╚████╔╝░██║░░██║                         {RESET}{BORDER}║")
-    print(f"  ║{ACC}{BOLD}    ██╔══██║░░╚██╔╝░░██║░░██║                         {RESET}{BORDER}║")
-    print(f"  ║{ACC}{BOLD}    ██║░░██║░░░██║░░░╚█████╔╝                         {RESET}{BORDER}║")
-    print(f"  ║{ACC}{BOLD}    ╚═╝░░╚═╝░░░╚═╝░░░░╚════╝                         {RESET}{BORDER}║")
-    print(f"  ║{' '*55}║")
-    print(f"  ╚{'═'*55}╝{RESET}")
-    print()
+    print(f"{BORDER}{'='*55}{RESET}")
+    print(f"{BORDER}||{' '*53}||{RESET}")
+    print(f"{BORDER}||{ACC}{BOLD}   ░█████╗░██╗░░░██╗░█████╗░{RESET}{BORDER}               ||{RESET}")
+    print(f"{BORDER}||{ACC}{BOLD}   ██╔══██╗╚██╗░██╔╝██╔══██╗{RESET}{BORDER}               ||{RESET}")
+    print(f"{BORDER}||{ACC}{BOLD}   ███████║░╚████╔╝░██║░░██║{RESET}{BORDER}               ||{RESET}")
+    print(f"{BORDER}||{ACC}{BOLD}   ██╔══██║░░╚██╔╝░░██║░░██║{RESET}{BORDER}               ||{RESET}")
+    print(f"{BORDER}||{ACC}{BOLD}   ██║░░██║░░░██║░░░╚█████╔╝{RESET}{BORDER}               ||{RESET}")
+    print(f"{BORDER}||{' '*53}||{RESET}")
+    print(f"{BORDER}{'='*55}{RESET}")
     slow_print(f"  {BOLD}{ACC}    A T T A C K   Y O U R   O F F E N D E R S{RESET}", 0.018)
     print()
-    print(f"  {DIM}{WHITE}    By Fashipe Oluwadamilare Ayoola{RESET}")
-    print(f"  {DIM}{WHITE}    CS/Cybersecurity · MIVA Open University{RESET}")
-    print()
-    print(f"  {YELLOW}  ⚠  Authorized Testing & CTFs ONLY — Unauthorized use is illegal{RESET}")
-    print()
-    print(f"  {BORDER}{'─'*57}{RESET}")
 
 def menu():
-    print(f"""
-  {ACC}{BOLD}[ MODULES ]{RESET}
-  {BORDER}{'─'*57}{RESET}
-
-  {ACC}[1]{RESET}  {WHITE}Phishing Kit Generator{RESET}
-       {GRAY}Craft convincing credential harvest pages{RESET}
-
-  {ACC}[2]{RESET}  {WHITE}Steganography Suite{RESET}
-       {GRAY}Hide & extract data inside images and text{RESET}
-
-  {ACC}[3]{RESET}  {WHITE}Social Engineering Toolkit{RESET}
-       {GRAY}Pretexting scripts, vishing guides, OSINT checklists{RESET}
-
-  {ACC}[4]{RESET}  {WHITE}Password Tools{RESET}
-       {GRAY}Generate, analyze, identify, and crack hashes{RESET}
-
-  {ACC}[5]{RESET}  {WHITE}Network Tools{RESET}
-       {GRAY}Port scan, DNS lookup, ping sweep, banner grab{RESET}
-
-  {ACC}[6]{RESET}  {WHITE}Crypto Tools{RESET}
-       {GRAY}Caesar, Vigenère, XOR, Base64, AES-256 & more{RESET}
-
-  {BORDER}{'─'*57}{RESET}
-  {GRAY}[h]{RESET} Help    {GRAY}[c]{RESET} Credits    {GRAY}[q]{RESET} Quit
-  {BORDER}{'─'*57}{RESET}
-""")
+    print(f"""{BORDER}{'─'*55}{RESET}
+{ACC}{BOLD}  OFFENSIVE MODULES{RESET}
+{BORDER}{'─'*55}{RESET}
+  {ACC}[1]{RESET}  Phishing Kit          {ACC}[2]{RESET}  Steganography
+  {ACC}[3]{RESET}  Social Engineering    {ACC}[4]{RESET}  Password Tools
+  {ACC}[5]{RESET}  Network Tools         {ACC}[6]{RESET}  Crypto Tools
+{BORDER}{'─'*55}{RESET}
+{ACC}{BOLD}  RECON & OSINT{RESET}
+{BORDER}{'─'*55}{RESET}
+  {ACC}[7]{RESET}  OSINT Lookup          {ACC}[8]{RESET}  Hash Cracker
+  {ACC}[9]{RESET}  Wordlist Generator    {ACC}[10]{RESET} Subdomain Enum
+  {ACC}[11]{RESET} Dir Bruteforcer
+{BORDER}{'─'*55}{RESET}
+{ACC}{BOLD}  WEB ATTACKS{RESET}
+{BORDER}{'─'*55}{RESET}
+  {ACC}[12]{RESET} SQLi Tester           {ACC}[13]{RESET} XSS Tester
+{BORDER}{'─'*55}{RESET}
+{ACC}{BOLD}  NETWORK ATTACKS{RESET}
+{BORDER}{'─'*55}{RESET}
+  {ACC}[14]{RESET} SSH Bruteforce        {ACC}[15]{RESET} WiFi Scanner
+  {ACC}[16]{RESET} ARP Spoof/MITM        {ACC}[17]{RESET} Packet Sniffer
+  {ACC}[18]{RESET} Port Knocker
+{BORDER}{'─'*55}{RESET}
+{ACC}{BOLD}  EVASION & POST-EXPLOITATION{RESET}
+{BORDER}{'─'*55}{RESET}
+  {ACC}[19]{RESET} File Encryptor        {ACC}[20]{RESET} Metadata Cleaner
+  {ACC}[21]{RESET} Payload Encoder
+{BORDER}{'─'*55}{RESET}
+  {ACC}[h]{RESET} Help   {ACC}[c]{RESET} Credits   {ACC}[q]{RESET} Quit
+{BORDER}{'─'*55}{RESET}""")
 
 def credits_screen():
     clear()
     print(f"""
-  {BORDER}╔{'═'*55}╗
-  ║{'CREDITS':^55}║
-  ╚{'═'*55}╝{RESET}
+{BORDER}{'='*55}{RESET}
+{ACC}{BOLD}{'CREDITS':^55}{RESET}
+{BORDER}{'='*55}{RESET}
 
-  {ACC}Framework   :{RESET}  AYO — Attack Your Offenders
-  {ACC}Author      :{RESET}  Fashipe Oluwadamilare Ayoola
-  {ACC}Institution :{RESET}  MIVA Open University
-  {ACC}Program     :{RESET}  CS / Cybersecurity
-  {ACC}Internship  :{RESET}  Pintop Technologies Limited, Lagos
-  {ACC}GitHub      :{RESET}  github.com/MarceloMiva/AYO
+  {WHITE}Tool    :{RESET} AYO — Attack Your Offenders
+  {WHITE}Author  :{RESET} Fashipe Oluwadamilare Ayoola
+  {WHITE}GitHub  :{RESET} github.com/MarceloMiva
+  {WHITE}Purpose :{RESET} Authorized testing & CTFs ONLY
+  {WHITE}Version :{RESET} 2.0 — Full Offensive Suite
 
-  {BORDER}{'─'*57}{RESET}
-  {DIM}Built for learning, CTFs, and authorized engagements.
-  Inspired by the tools of the trade.{RESET}
-
-  {YELLOW}  [ Use responsibly. You are accountable for your actions. ]{RESET}
-""")
-    input(f"  {GRAY}Press Enter to return...{RESET}")
-
-def help_screen():
-    clear()
-    print(f"""
-  {BORDER}╔{'═'*55}╗
-  ║{'HELP':^55}║
-  ╚{'═'*55}╝{RESET}
-
-  {WHITE}Each module is self-contained with its own menu.{RESET}
-  {GRAY}Use [b] inside any module to return here.{RESET}
-
-  {BORDER}{'─'*57}{RESET}
-
-  {ACC}[1] Phishing Kit{RESET}
-      {GRAY}Generate HTML lure pages mimicking login portals.
-      Captures credentials to a local log (lab use only).{RESET}
-
-  {ACC}[2] Steganography{RESET}
-      {GRAY}Hide text in PNG/JPG via LSB encoding.
-      Also supports zero-width character text stego.{RESET}
-
-  {ACC}[3] Social Engineering{RESET}
-      {GRAY}Pretext scripts, vishing call guides, OSINT checklists
-      and awareness training scenarios.{RESET}
-
-  {ACC}[4] Password Tools{RESET}
-      {GRAY}Wordlist generator, hash identifier, strength analyzer,
-      and dictionary-based hash cracker.{RESET}
-
-  {ACC}[5] Network Tools{RESET}
-      {GRAY}Port scanner, ping sweep, DNS lookup,
-      reverse DNS, and banner grabbing.{RESET}
-
-  {ACC}[6] Crypto Tools{RESET}
-      {GRAY}Caesar, Vigenère, XOR, Base64, Hex, AES-256,
-      ROT13, and frequency analysis.{RESET}
-
-  {BORDER}{'─'*57}{RESET}
-""")
+{BORDER}{'─'*55}{RESET}
+  {GRAY}21 modules | Built on Termux/Android{RESET}
+{BORDER}{'='*55}{RESET}""")
     input(f"  {GRAY}Press Enter to return...{RESET}")
 
 def main():
     banner()
     menu()
-
     while True:
         try:
             choice = input(f"  {ACC}[ayo]>{RESET} ").strip().lower()
@@ -159,46 +97,79 @@ def main():
             if choice == "1":
                 from modules.phishing import run_phishing
                 run_phishing()
-                banner()
-                menu()
             elif choice == "2":
                 from modules.steganography import run_steganography
                 run_steganography()
-                banner()
-                menu()
             elif choice == "3":
                 from modules.social_engineering import run_social_engineering
                 run_social_engineering()
-                banner()
-                menu()
             elif choice == "4":
                 from modules.password_tools import run_password_tools
                 run_password_tools()
-                banner()
-                menu()
             elif choice == "5":
                 from modules.network_tools import run_network_tools
                 run_network_tools()
-                banner()
-                menu()
             elif choice == "6":
                 from modules.crypto_tools import run_crypto_tools
                 run_crypto_tools()
-                banner()
-                menu()
+            elif choice == "7":
+                from modules.osint import run_osint
+                run_osint()
+            elif choice == "8":
+                from modules.hash_cracker import run_hash_cracker
+                run_hash_cracker()
+            elif choice == "9":
+                from modules.wordlist_gen import run_wordlist_gen
+                run_wordlist_gen()
+            elif choice == "10":
+                from modules.subdomain_enum import run_subdomain_enum
+                run_subdomain_enum()
+            elif choice == "11":
+                from modules.dir_bruteforce import run_dir_bruteforce
+                run_dir_bruteforce()
+            elif choice == "12":
+                from modules.sqli_tester import run_sqli_tester
+                run_sqli_tester()
+            elif choice == "13":
+                from modules.xss_tester import run_xss_tester
+                run_xss_tester()
+            elif choice == "14":
+                from modules.ssh_bruteforce import run_ssh_bruteforce
+                run_ssh_bruteforce()
+            elif choice == "15":
+                from modules.wifi_scanner import run_wifi_scanner
+                run_wifi_scanner()
+            elif choice == "16":
+                from modules.arp_spoof import run_arp_spoof
+                run_arp_spoof()
+            elif choice == "17":
+                from modules.packet_sniffer import run_packet_sniffer
+                run_packet_sniffer()
+            elif choice == "18":
+                from modules.port_knocker import run_port_knocker
+                run_port_knocker()
+            elif choice == "19":
+                from modules.file_encryptor import run_file_encryptor
+                run_file_encryptor()
+            elif choice == "20":
+                from modules.metadata_cleaner import run_metadata_cleaner
+                run_metadata_cleaner()
+            elif choice == "21":
+                from modules.payload_encoder import run_payload_encoder
+                run_payload_encoder()
             elif choice == "h":
-                help_screen()
-                banner()
-                menu()
+                pass
             elif choice == "c":
                 credits_screen()
-                banner()
-                menu()
-            elif choice in ["q", "quit", "exit"]:
+            elif choice in ["q","quit","exit"]:
                 print(f"\n  {ACC}[ AYO shutting down. Stay legal. ]{RESET}\n")
                 sys.exit(0)
             else:
-                print(f"  {YELLOW}[!] Invalid option. Type a number or [h] for help.{RESET}\n")
+                print(f"  {YELLOW}[!] Invalid option.{RESET}\n")
+                continue
+
+            banner()
+            menu()
 
         except KeyboardInterrupt:
             print(f"\n\n  {ACC}[ Interrupted. Exiting AYO. ]{RESET}\n")
