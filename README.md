@@ -25,6 +25,15 @@ CS/Cybersecurity · MIVA Open University
 AYO — **Attack Your Offenders** is a modular offensive security framework
 
 ## Modules
+Offensive Modules (5 modules)
+| # | Module | Description |
+|---|--------|-------------|
+| 1 | **Phishing Kit Generator** | HTML credential lure pages + Python capture server |
+| 2 | **Steganography Suite** | LSB image encoding + zero-width character text steganography |
+| 3 | **Social Engineering Toolkit** | Pretexting scripts, vishing guides, OSINT checklists |
+| 4 | **Password Tools** | Hash ID, generator, strength analyzer, wordlist builder, cracker |
+| 5 | **Network Tools** | Port scanner, DNS lookup, ping sweep, banner grabbing |
+| 6 | **Crypto Tools** | Caesar, Vigenère, XOR, AES-256, Base64, Hex, ROT13, frequency analysis |
 ### Recon & OSINT (5 modules)
 | # | Module | Description |
 |---|--------|-------------|
