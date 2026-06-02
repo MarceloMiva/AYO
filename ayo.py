@@ -54,6 +54,7 @@ def menu():
 {ACC}{BOLD}  WEB ATTACKS{RESET}
 {BORDER}{'─'*55}{RESET}
   {ACC}[12]{RESET} SQLi Tester           {ACC}[13]{RESET} XSS Tester
+  {ACC}[22]{RESET} Web Vuln Scanner
 {BORDER}{'─'*55}{RESET}
 {ACC}{BOLD}  NETWORK ATTACKS{RESET}
 {BORDER}{'─'*55}{RESET}
@@ -80,10 +81,10 @@ def credits_screen():
   {WHITE}Author  :{RESET} Fashipe Oluwadamilare Ayoola
   {WHITE}GitHub  :{RESET} github.com/MarceloMiva
   {WHITE}Purpose :{RESET} Authorized testing & CTFs ONLY
-  {WHITE}Version :{RESET} 2.0 — Full Offensive Suite
+  {WHITE}Version :{RESET} 2.1 — 22 Modules, Web Scanner Added
 
 {BORDER}{'─'*55}{RESET}
-  {GRAY}21 modules | Built on Termux/Android{RESET}
+  {GRAY}22 modules | Built on Termux/Android{RESET}
 {BORDER}{'='*55}{RESET}""")
     input(f"  {GRAY}Press Enter to return...{RESET}")
 
@@ -157,6 +158,9 @@ def main():
             elif choice == "21":
                 from modules.payload_encoder import run_payload_encoder
                 run_payload_encoder()
+            elif choice == "22":
+                from modules.web_vuln_scanner import run_web_vuln_scanner
+                run_web_vuln_scanner()
             elif choice == "h":
                 pass
             elif choice == "c":
