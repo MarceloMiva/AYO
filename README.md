@@ -25,15 +25,39 @@ CS/Cybersecurity · MIVA Open University
 AYO — **Attack Your Offenders** is a modular offensive security framework
 
 ## Modules
-
+### Recon & OSINT (5 modules)
 | # | Module | Description |
 |---|--------|-------------|
-| 1 | **Phishing Kit Generator** | HTML lure pages + credential capture server |
-| 2 | **Steganography Suite** | LSB image stego + zero-width text stego |
-| 3 | **Social Engineering Toolkit** | Pretext scripts, vishing guides, OSINT checklists |
-| 4 | **Password Tools** | Hash ID, generator, strength analyzer, wordlist builder, cracker |
-| 5 | **Network Tools** | Port scan, DNS lookup, ping sweep, banner grab |
-| 6 | **Crypto Tools** | Caesar, Vigenère, XOR, Base64, Hex, AES-256, frequency analysis |
+| 7 | **OSINT Lookup** | Username enumeration across 10 platforms + email breach checking (HaveIBeenPwned API) |
+| 8 | **Hash Cracker** | MD5/SHA1/SHA256/SHA512 identification + wordlist-based cracking |
+| 9 | **Wordlist Generator** | Keyword-based wordlist with leet speak, years (1990-2025), special chars, permutations |
+| 10 | **Subdomain Enumerator** | Built-in + custom wordlist subdomain discovery via DNS |
+| 11 | **Dir Bruteforcer** | Directory/file enumeration with status code filtering (200/301/302/403) |
+
+### Web Attacks (3 modules)
+| # | Module | Description |
+|---|--------|-------------|
+| 12 | **SQLi Tester** | 25 SQL injection payloads + error signature detection |
+| 13 | **XSS Tester** | 20 XSS payloads (script tags, onerror, javascript: URIs, encoded variants) |
+| 22 | **Web Vuln Scanner** | SSL/TLS certs, security headers audit, server fingerprinting, path discovery |
+
+### Network Attacks (5 modules)
+| # | Module | Description |
+|---|--------|-------------|
+| 14 | **SSH Bruteforcer** | Paramiko-based SSH credential testing (authorized only) |
+| 15 | **WiFi Scanner** | Termux API-powered SSID/BSSID/signal/security enumeration |
+| 16 | **ARP Spoof/MITM** | ARP poisoning via dsniff + IP forwarding, nmap ARP scan |
+| 17 | **Packet Sniffer** | Raw socket packet capture + Ethernet/IP/TCP/UDP header parsing |
+| 18 | **Port Knocker** | TCP/UDP port knocking with preset sequences + verification |
+
+### Evasion & Post-Exploitation (4 modules)
+| # | Module | Description |
+|---|--------|-------------|
+| 19 | **File Encryptor** | AES-256-CBC encryption with PBKDF2 key derivation (100k iterations) |
+| 20 | **Metadata Cleaner** | EXIF removal (JPEG via PIL) + PDF metadata regex cleaning |
+| 21 | **Payload Encoder** | Base64, Hex, URL, Binary, Octal, Unicode, ROT13, XOR, Base32, HTML entities |
+
+
 
 ---
 
