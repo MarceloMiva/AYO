@@ -7,8 +7,8 @@ BOLD = "\033[1m"; ACC = CYAN; BORDER = GREEN
 
 def validate_imei(imei):
     """Luhn algorithm IMEI validation"""
-    imei = imei.replace(" ", "").replace("-", "")
-    if not imei.isdigit() or len(imei) != 15:
+    imei = ''.join(filter(str.isdigit, imei))
+    if len(imei) != 15:
         return False, "Invalid IMEI format (must be 15 digits)"
     
     digits = [int(d) for d in imei]
@@ -23,20 +23,18 @@ def validate_imei(imei):
 
 def lookup_imei(imei):
     """Lookup IMEI device info"""
+    imei = ''.join(filter(str.isdigit, imei))
     valid, msg = validate_imei(imei)
     if not valid:
         print(f"  {RED}[!] {msg}{RESET}")
         return
     
-    imei_clean = imei.replace(" ", "").replace("-", "")
-    print(f"\n  {GREEN}[+] IMEI Lookup: {imei_clean}{RESET}\n")
+    print(f"\n  {GREEN}[+] IMEI Lookup: {imei}{RESET}\n")
     print(f"  {CYAN}Validation:{RESET}")
     print(f"    Status: {GREEN}Valid IMEI{RESET}")
     
-    # TAC (Type Allocation Code) — first 8 digits
-    tac = imei_clean[:8]
+    tac = imei[:8]
     
-    # Common manufacturer TACs (built-in database)
     tac_db = {
         "35159315": {"brand": "Apple", "model": "iPhone 15 Pro Max"},
         "35139315": {"brand": "Apple", "model": "iPhone 15 Pro"},
@@ -52,24 +50,20 @@ def lookup_imei(imei):
         "35076712": {"brand": "Xiaomi", "model": "13T"},
         "35099402": {"brand": "OnePlus", "model": "12"},
         "35099403": {"brand": "OnePlus", "model": "12R"},
-        "35131815": {"brand": "Huawei", "model": "P60 Pro"},
-        "35131816": {"brand": "Huawei", "model": "P60"},
     }
     
     device = tac_db.get(tac, {"brand": "Unknown", "model": "Unknown"})
     
     print(f"\n  {CYAN}Device Info:{RESET}")
-    print(f"    TAC (Type Code): {tac}")
+    print(f"    TAC: {tac}")
     print(f"    Brand: {device['brand']}")
     print(f"    Model: {device['model']}")
-    print(f"    Serial Number: {imei_clean[8:14]}")
-    print(f"    Check Digit: {imei_clean[14]}")
+    print(f"    Serial: {imei[8:14]}")
+    print(f"    Check: {imei[14]}")
     
-    # Simplified carrier/region detection (can be expanded)
-    print(f"\n  {CYAN}Additional Info:{RESET}")
-    print(f"    IMEI Type: GSM/3G/4G/5G")
-    print(f"    Status: Active (not blacklisted)")
-    print(f"    Note: For detailed carrier/network info, contact manufacturer")
+    print(f"\n  {CYAN}Additional:{RESET}")
+    print(f"    Type: GSM/3G/4G/5G")
+    print(f"    Status: Active")
 
 def run_imei_tracker():
     while True:
@@ -81,29 +75,28 @@ def run_imei_tracker():
   {ACC}[2]{RESET} Batch IMEI lookup (file)
   {ACC}[3]{RESET} IMEI validator
   {ACC}[b]{RESET} Back
-{BORDER}{'─'*45}{RESET}
-  {GRAY}Built-in TAC database + Luhn validation{RESET}""")
+{BORDER}{'─'*45}{RESET}""")
         choice = input(f"  {ACC}[imei]>{RESET} ").strip().lower()
 
         if choice == "1":
-            imei = input(f"  {GRAY}Enter IMEI (15 digits): {RESET}").strip()
+            imei = input(f"  {ACC}IMEI:{RESET} ").strip()
             if imei:
                 lookup_imei(imei)
 
         elif choice == "2":
-            filepath = input(f"  {GRAY}Enter file path (one IMEI per line): {RESET}").strip()
+            filepath = input(f"  {ACC}File:{RESET} ").strip()
             try:
                 with open(filepath, 'r') as f:
                     imeis = [line.strip() for line in f if line.strip()]
                 print(f"  {YELLOW}[*] Processing {len(imeis)} IMEIs...{RESET}")
                 for imei in imeis:
                     lookup_imei(imei)
-                    input(f"  {GRAY}Press Enter for next...{RESET}")
+                    input(f"  {GRAY}Next...{RESET}")
             except FileNotFoundError:
                 print(f"  {RED}[!] File not found.{RESET}")
 
         elif choice == "3":
-            imei = input(f"  {GRAY}Enter IMEI to validate: {RESET}").strip()
+            imei = input(f"  {ACC}IMEI:{RESET} ").strip()
             valid, msg = validate_imei(imei)
             status = GREEN if valid else RED
             print(f"  {status}{msg}{RESET}")
@@ -111,6 +104,6 @@ def run_imei_tracker():
         elif choice == "b":
             break
         else:
-            print(f"  {YELLOW}[!] Invalid option.{RESET}")
+            print(f"  {YELLOW}[!] Invalid.{RESET}")
         
-        input(f"\n  {GRAY}Press Enter to continue...{RESET}")
+        input(f"\n  {GRAY}Enter to continue...{RESET}")
