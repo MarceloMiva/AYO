@@ -49,7 +49,8 @@ def menu():
 {BORDER}{'─'*55}{RESET}
   {ACC}[7]{RESET}  OSINT Lookup          {ACC}[8]{RESET}  Hash Cracker
   {ACC}[9]{RESET}  Wordlist Generator    {ACC}[10]{RESET} Subdomain Enum
-  {ACC}[11]{RESET} Dir Bruteforcer
+  {ACC}[11]{RESET} Dir Bruteforcer       {ACC}[23]{RESET} IP Tracker
+  {ACC}[24]{RESET} IMEI Tracker
 {BORDER}{'─'*55}{RESET}
 {ACC}{BOLD}  WEB ATTACKS{RESET}
 {BORDER}{'─'*55}{RESET}
@@ -81,10 +82,10 @@ def credits_screen():
   {WHITE}Author  :{RESET} Fashipe Oluwadamilare Ayoola
   {WHITE}GitHub  :{RESET} github.com/MarceloMiva
   {WHITE}Purpose :{RESET} Authorized testing & CTFs ONLY
-  {WHITE}Version :{RESET} 2.1 — 22 Modules, Web Scanner Added
+  {WHITE}Version :{RESET} 2.2 — 24 Modules (IP & IMEI Trackers Added)
 
 {BORDER}{'─'*55}{RESET}
-  {GRAY}22 modules | Built on Termux/Android{RESET}
+  {GRAY}24 modules | Built on Termux/Android{RESET}
 {BORDER}{'='*55}{RESET}""")
     input(f"  {GRAY}Press Enter to return...{RESET}")
 
@@ -161,6 +162,12 @@ def main():
             elif choice == "22":
                 from modules.web_vuln_scanner import run_web_vuln_scanner
                 run_web_vuln_scanner()
+            elif choice == "23":
+                from modules.ip_tracker import run_ip_tracker
+                run_ip_tracker()
+            elif choice == "24":
+                from modules.imei_tracker import run_imei_tracker
+                run_imei_tracker()
             elif choice == "h":
                 pass
             elif choice == "c":
