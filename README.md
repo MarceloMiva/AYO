@@ -42,7 +42,8 @@ Offensive Modules (5 modules)
 | 9 | **Wordlist Generator** | Keyword-based wordlist with leet speak, years (1990-2025), special chars, permutations |
 | 10 | **Subdomain Enumerator** | Built-in + custom wordlist subdomain discovery via DNS |
 | 11 | **Dir Bruteforcer** | Directory/file enumeration with status code filtering (200/301/302/403) |
-
+| 23 | **IP Tracker** | GeoIP lookup, ISP, coordinates, Whois data via ipwhois.app API |
+| 24 | **IMEI Tracker** | IMEI validation via Luhn algorithm, TAC device database, carrier detection |
 ### Web Attacks (3 modules)
 | # | Module | Description |
 |---|--------|-------------|
